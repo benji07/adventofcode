@@ -63,49 +63,32 @@ foreach ($interactions as $interaction) {
             break;
         case Interaction::AWAKE:
             if (!array_key_exists($guardId, $result)) {
-                $result[$guardId] = [];
-            }
-
-            $day = $start->format('m-d');
-            if (!array_key_exists($day, $result[$guardId])) {
-                $result[$guardId][$day] = array_fill(0, 60, 0);
+                $result[$guardId] = array_fill(0, 60, 0);
             }
 
             $startMinutes = (int) $start->format('i');
             $endMinutes = (int) $interaction->date->format('i');
 
-            foreach (range($startMinutes, $endMinutes) as $minute) {
-                $result[$guardId][$day][$minute] = 1;
+            foreach (range($startMinutes, $endMinutes - 1) as $minute) {
+                $result[$guardId][$minute]++;
             }
-            $result[$guardId][$day][$minute] = 0;
 
             break;
     }
 }
 
-foreach ($result as $guardId => $days) {
-    $maxSleeps[$guardId] = [];
-    foreach ($days as $day => $sleeps) {
-        $maxSleeps[$guardId][] = array_sum($sleeps);
-    }
-
-    $maxSleeps[$guardId] = array_sum($maxSleeps[$guardId]);
-}
-
-arsort($maxSleeps);
-$guardId = key($maxSleeps);
-$nbSleeps = reset($maxSleeps);
-
-echo "guard = $guardId - nbSleeps = $nbSleeps\n";
-
-$max = array_fill(0,60, 0);
-foreach ($result[$guardId] as $day => $sleeps) {
-    foreach ($sleeps as $i => $sleep) {
-        $max[$i]+=$sleep;
+$guard = null;
+$minute = null;
+$max = 0;
+foreach ($result as $guardId => $sleeps) {
+    arsort($sleeps);
+    $minute = key($sleeps);
+    if ($max < current($sleeps)) {
+        $minute = key($sleeps);
+        $max = current($sleeps);
+        $guard = $guardId;
     }
 }
 
-arsort($max);
-echo "minutes = " . key($max)."\n";
-
-echo "result = ". key($max)*$guardId."\n";
+echo "guard = $guard, minute = $minute\n";
+echo $guard * $minute;
