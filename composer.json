@@ -1,0 +1,14 @@
+{
+    "name": "benji07/adventofcode2020",
+    "description": "Advent of code 2020",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "AdventOfCode\\": "src/",
+            "AdventOfCode\\Tests\\": "tests/"
+        }
+    },
+    "require": {
+        "phpunit/phpunit": "^9.4"
+    }
+}
