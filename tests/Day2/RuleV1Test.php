@@ -2,17 +2,17 @@
 
 namespace AdventOfCode\Tests\Day2;
 
-use AdventOfCode\Day2\Rule;
+use AdventOfCode\Day2\RuleV1;
 use PHPUnit\Framework\TestCase;
 
-class RuleTest extends TestCase
+class RuleV1Test extends TestCase
 {
     /**
      * @dataProvider provideTestIsValid
      */
     public function testIsValid(int $min, int $max, string $letter, string $password, bool $expectedResult): void
     {
-        $rule = new Rule($min, $max, $letter);
+        $rule = new RuleV1($min, $max, $letter);
 
         self::assertEquals($expectedResult, $rule->isValid($password));
     }

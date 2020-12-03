@@ -2,7 +2,7 @@
 
 namespace AdventOfCode\Day2;
 
-class Rule
+class RuleV1 implements RuleInterface
 {
     public function __construct(
         public int $min,

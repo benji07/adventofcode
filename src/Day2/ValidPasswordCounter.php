@@ -4,10 +4,9 @@ namespace AdventOfCode\Day2;
 
 class ValidPasswordCounter
 {
-    /** @var callable */
-    private $ruleFactory;
+    private RuleFactoryInterface $ruleFactory;
 
-    public function __construct(callable $ruleFactory)
+    public function __construct(RuleFactoryInterface $ruleFactory)
     {
         $this->ruleFactory = $ruleFactory;
     }
@@ -19,7 +18,7 @@ class ValidPasswordCounter
         foreach ($inputs as $input) {
             [$min, $max, $letter, $password] = sscanf($input, '%d-%d %1s: %s');
 
-            $rule = ($this->ruleFactory)($min, $max, $letter);
+            $rule = $this->ruleFactory->create($min, $max, $letter);
 
             if ($rule->isValid($password)) {
                 $result++;
