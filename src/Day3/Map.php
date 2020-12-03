@@ -4,6 +4,9 @@ namespace AdventOfCode\Day3;
 
 class Map
 {
+    /**
+     * @param string[] $data
+     */
     public function __construct(
         private array $data
     ) {}
@@ -34,7 +37,7 @@ class Map
     {
         $row = $this->data[$point->y];
 
-        $row = str_repeat($row, ceil($point->x / strlen($row)) + 1);
+        $row = str_repeat($row, (int) ceil($point->x / strlen($row)) + 1);
 
         return $row[$point->x] === '#';
     }

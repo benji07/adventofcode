@@ -24,6 +24,8 @@ class ExpenseReport
                 }
             }
         }
+
+        return 0;
     }
 
     public function getAnswer2(): int
@@ -37,5 +39,7 @@ class ExpenseReport
                 }
             }
         }
+
+        return 0;
     }
 }

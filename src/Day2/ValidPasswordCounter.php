@@ -11,6 +11,9 @@ class ValidPasswordCounter
         $this->ruleFactory = $ruleFactory;
     }
 
+    /**
+     * @param iterable<string> $inputs
+     */
     public function count(iterable $inputs): int
     {
         $result = 0;
