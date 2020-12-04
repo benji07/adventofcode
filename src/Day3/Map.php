@@ -37,8 +37,6 @@ class Map
     {
         $row = $this->data[$point->y];
 
-        $row = str_repeat($row, (int) ceil($point->x / strlen($row)) + 1);
-
-        return $row[$point->x] === '#';
+        return $row[$point->x % strlen($row)] === '#';
     }
 }
