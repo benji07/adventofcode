@@ -3,6 +3,7 @@
 namespace AdventOfCode\Tests\Day6;
 
 use AdventOfCode\Day6\Group;
+use AdventOfCode\Day6\InputParser;
 use PHPUnit\Framework\TestCase;
 
 class GroupTest extends TestCase
@@ -47,11 +48,9 @@ a",
 
     public function testPart1(): void
     {
-        $input = explode("\n\n", trim(file_get_contents(__DIR__.'/input.txt')));
+        $groups = (new InputParser())->parse(file_get_contents(__DIR__.'/input.txt'));
 
-        $result = array_sum(array_map(fn(string $group): int => (new Group(...explode("\n", $group)))->count(), $input));
-
-        self::assertEquals(6775, $result);
+        self::assertEquals(6775, $groups->getPart1Result());
     }
 
     /**
@@ -94,10 +93,8 @@ a",
 
     public function testPart2(): void
     {
-        $input = explode("\n\n", trim(file_get_contents(__DIR__.'/input.txt')));
+        $groups = (new InputParser())->parse(file_get_contents(__DIR__.'/input.txt'));
 
-        $result = array_sum(array_map(fn(string $group): int => (new Group(...explode("\n", $group)))->countYes(), $input));
-
-        self::assertEquals(3356, $result);
+        self::assertEquals(3356, $groups->getPart2Result());
     }
 }
