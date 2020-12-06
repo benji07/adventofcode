@@ -14,11 +14,11 @@ class GroupCollection
 
     public function getPart1Result(): int
     {
-        return array_sum(array_map(fn(Group $group): int => $group->count(), $this->groups));
+        return (int) array_sum(array_map(fn(Group $group): int => $group->count(), $this->groups));
     }
 
     public function getPart2Result(): int
     {
-        return array_sum(array_map(fn(Group $group): int => $group->countYes(), $this->groups));
+        return (int) array_sum(array_map(fn(Group $group): int => $group->countYes(), $this->groups));
     }
 }

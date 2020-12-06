@@ -14,13 +14,13 @@ class Group
 
     public function count(): int
     {
-        return count(count_chars(implode('', $this->anwsers), 1));
+        return count((array) count_chars(implode('', $this->anwsers), 1));
     }
 
     public function countYes(): int
     {
         return count(
-            array_filter(count_chars(implode('', $this->anwsers), 1), fn(int $nb) => $nb === count($this->anwsers))
+            array_filter((array) count_chars(implode('', $this->anwsers), 1), fn(int $nb) => $nb === count($this->anwsers))
         );
     }
 }
