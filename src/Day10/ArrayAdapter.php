@@ -31,4 +31,39 @@ class ArrayAdapter
 
         return $differences[1] * $differences[2] * $differences[3];
     }
+
+    public function countArrangements(): int
+    {
+        /** @var int[] $adapters */
+        $adapters = array_merge([0, (int) max($this->adapters) + 3], $this->adapters);
+
+        $adjacencyList = [];
+        foreach ($adapters as $from) {
+            foreach ($adapters as $to) {
+                $diff = $to - $from;
+                if ($diff > 0 && $diff <= 3) {
+                    $adjacencyList[$from][] = $to;
+                }
+            }
+        }
+
+        return $this->countPath($adjacencyList, 0);
+    }
+
+    public function countPath(array $list, int $node): int
+    {
+        static $cache = [];
+
+        if (array_key_exists($node, $cache)) {
+            return $cache[$node];
+        }
+
+        if (!array_key_exists($node, $list)) {
+            return 1;
+        }
+
+        $cache[$node] = (int) array_sum(array_map(fn(int $child): int => $this->countPath($list, $child), $list[$node]));
+
+        return $cache[$node];
+    }
 }
