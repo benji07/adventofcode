@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day4;
 
 class Passport
@@ -24,7 +26,7 @@ class Passport
         $fieldTypes = Field::getTypes();
 
         foreach ($fieldTypes as $fieldType) {
-            if (array_key_exists($fieldType, $this->fields)) {
+            if (\array_key_exists($fieldType, $this->fields)) {
                 continue;
             }
 

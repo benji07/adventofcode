@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day2;
 
 use AdventOfCode\Day2\RuleV1;

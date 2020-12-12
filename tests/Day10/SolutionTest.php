@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day10;
 
 use AdventOfCode\Day10\ArrayAdapter;
@@ -67,7 +69,7 @@ INPUT;
 
     public function testPart1(): void
     {
-        $input = file_get_contents(__DIR__.'/input.txt');
+        $input = file_get_contents(__DIR__ . '/input.txt');
 
         self::assertEquals(2210, (new ArrayAdapter($input))->getDifferences());
     }
@@ -132,7 +134,7 @@ INPUT;
 
     public function testPart2(): void
     {
-        $input = file_get_contents(__DIR__.'/input.txt');
+        $input = file_get_contents(__DIR__ . '/input.txt');
 
         self::assertEquals(7_086_739_046_912, (new ArrayAdapter($input))->countArrangements());
     }

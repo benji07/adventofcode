@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day8;
 
 class Runner
@@ -20,7 +22,7 @@ class Runner
     public static function createFromString(string $input): self
     {
         $instructions = array_map(
-            fn(string $instruction): Instruction => new Instruction(...(array) sscanf($instruction, "%s %d")),
+            fn (string $instruction): Instruction => new Instruction(...(array) sscanf($instruction, '%s %d')),
             explode("\n", trim($input))
         );
 
@@ -38,7 +40,7 @@ class Runner
             $key = $this->instructions->key();
 
             if ($stopOnLoop) {
-                if (in_array($key, $executed, true)) {
+                if (\in_array($key, $executed, true)) {
                     return 0;
                 }
 
@@ -48,6 +50,7 @@ class Runner
             switch ($instruction->type) {
                 case 'acc':
                     $this->accumulator += $instruction->value;
+                    // no break
                 case 'nop':
                     $this->instructions->next();
                     break;
@@ -70,7 +73,7 @@ class Runner
     {
         $copyInstructions = new \ArrayIterator($this->instructions->getArrayCopy());
         foreach ($copyInstructions as $i => $instruction) {
-            if ($instruction->type !== $fromInstruction && $instruction->type !== $toInstruction ) {
+            if ($instruction->type !== $fromInstruction && $instruction->type !== $toInstruction) {
                 continue;
             }
 

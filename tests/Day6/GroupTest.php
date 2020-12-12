@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day6;
 
 use AdventOfCode\Day6\Group;
@@ -20,35 +22,35 @@ class GroupTest extends TestCase
 
     public function provideTestCount(): iterable
     {
-        yield ["abc", 3];
+        yield ['abc', 3];
 
         yield [
-            "a
+            'a
 b
-c",
+c',
             3,
         ];
 
         yield [
-            "ab
-ac",
+            'ab
+ac',
             3,
         ];
 
         yield [
-            "a
+            'a
 a
 a
-a",
+a',
             1,
         ];
 
-        yield ["b", 1];
+        yield ['b', 1];
     }
 
     public function testPart1(): void
     {
-        $groups = (new InputParser())->parse(file_get_contents(__DIR__.'/input.txt'));
+        $groups = (new InputParser())->parse(file_get_contents(__DIR__ . '/input.txt'));
 
         self::assertEquals(6775, $groups->getPart1Result());
     }
@@ -65,35 +67,35 @@ a",
 
     public function provideTestCountYes(): iterable
     {
-        yield ["abc", 3];
+        yield ['abc', 3];
 
         yield [
-            "a
+            'a
 b
-c",
+c',
             0,
         ];
 
         yield [
-            "ab
-ac",
+            'ab
+ac',
             1,
         ];
 
         yield [
-            "a
+            'a
 a
 a
-a",
+a',
             1,
         ];
 
-        yield ["b", 1];
+        yield ['b', 1];
     }
 
     public function testPart2(): void
     {
-        $groups = (new InputParser())->parse(file_get_contents(__DIR__.'/input.txt'));
+        $groups = (new InputParser())->parse(file_get_contents(__DIR__ . '/input.txt'));
 
         self::assertEquals(3356, $groups->getPart2Result());
     }

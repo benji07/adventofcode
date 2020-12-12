@@ -1,10 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day7;
 
 class Parser
 {
     public array $constraints;
+
     public function __construct(string $data)
     {
         $this->constraints = [];
@@ -23,11 +26,10 @@ class Parser
             $rules = explode(', ', trim($rulePart, '.'));
             foreach ($rules as $rule) {
                 $rule = trim(str_replace([' bags', ' bag'], '', $rule));
-                [$amount, $destColor] = explode(' ', $rule , 2);
+                [$amount, $destColor] = explode(' ', $rule, 2);
 
                 $this->constraints[$color][$destColor] = $amount;
             }
-
         }
     }
 
@@ -37,7 +39,7 @@ class Parser
 
         foreach ($this->constraints as $color => $contains) {
             if ($this->find($search, array_keys($contains))) {
-                $found++;
+                ++$found;
             }
         }
 
@@ -46,11 +48,11 @@ class Parser
 
     protected function find(string $search, array $contains): bool
     {
-        if (count($contains) === 0) {
+        if (\count($contains) === 0) {
             return false;
         }
 
-        if (in_array($search, $contains, true)) {
+        if (\in_array($search, $contains, true)) {
             return true;
         }
 
@@ -64,7 +66,7 @@ class Parser
 
     public function containsBags(string $bag): int
     {
-        if (count($this->constraints[$bag]) === 0) {
+        if (\count($this->constraints[$bag]) === 0) {
             return 0;
         }
 

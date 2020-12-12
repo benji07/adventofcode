@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day2;
 
 class RuleV1 implements RuleInterface
@@ -8,7 +10,8 @@ class RuleV1 implements RuleInterface
         public int $min,
         public int $max,
         public string $letter,
-    ) {}
+    ) {
+    }
 
     public function isValid(string $password): bool
     {

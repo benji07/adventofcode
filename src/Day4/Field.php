@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day4;
 
 class Field
@@ -16,7 +18,8 @@ class Field
     public function __construct(
         public string $type,
         public string $value
-    ) {}
+    ) {
+    }
 
     public static function getTypes(): array
     {

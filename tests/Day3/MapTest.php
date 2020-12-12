@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day3;
 
 use AdventOfCode\Day3\Map;
@@ -38,15 +40,15 @@ class MapTest extends TestCase
         yield 'sample' => [
             $this->sampleMap,
             new Slope(3, 1),
-            7
+            7,
         ];
 
-        $data = explode("\n", trim(file_get_contents(__DIR__. '/input.txt')));
+        $data = explode("\n", trim(file_get_contents(__DIR__ . '/input.txt')));
 
         yield 'first star' => [
             $data,
             new Slope(3, 1),
-            252
+            252,
         ];
     }
 
@@ -65,13 +67,13 @@ class MapTest extends TestCase
         yield 'yes' => [
             $this->sampleMap,
             new Point(3, 10),
-            true
+            true,
         ];
 
         yield 'false' => [
             $this->sampleMap,
             new Point(3, 1),
-            false
+            false,
         ];
     }
 
@@ -90,25 +92,25 @@ class MapTest extends TestCase
         yield 'inside initial map + tree' => [
             $this->sampleMap,
             new Point(2, 0),
-            true
+            true,
         ];
 
         yield 'inside initial map + no tree' => [
             $this->sampleMap,
             new Point(2, 1),
-            false
+            false,
         ];
 
         yield 'outside initial map + tree' => [
             $this->sampleMap,
             new Point(13, 0),
-            true
+            true,
         ];
 
         yield 'outside initial map + no tree' => [
             $this->sampleMap,
             new Point(15, 0),
-            false
+            false,
         ];
     }
 
@@ -142,15 +144,15 @@ class MapTest extends TestCase
         yield [
             $this->sampleMap,
             $slopes,
-            336
+            336,
         ];
 
-        $data = explode("\n", trim(file_get_contents(__DIR__. '/input.txt')));
+        $data = explode("\n", trim(file_get_contents(__DIR__ . '/input.txt')));
 
         yield 'first star' => [
             $data,
             $slopes,
-            2_608_962_048
+            2_608_962_048,
         ];
     }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day2;
 
 class ValidPasswordCounter
@@ -24,7 +26,7 @@ class ValidPasswordCounter
             $rule = $this->ruleFactory->create($min, $max, $letter);
 
             if ($rule->isValid($password)) {
-                $result++;
+                ++$result;
             }
         }
 

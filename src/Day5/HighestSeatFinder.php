@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day5;
 
 class HighestSeatFinder
@@ -8,7 +10,7 @@ class HighestSeatFinder
     {
         return array_reduce(
             $boardingPasses,
-            fn($max, BoardingPass $boardingPass) => max($max, $boardingPass->seatID),
+            fn ($max, BoardingPass $boardingPass) => max($max, $boardingPass->seatID),
             0
         );
     }

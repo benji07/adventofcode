@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day4;
 
 use AdventOfCode\Day4\Field;
@@ -33,14 +35,14 @@ class PassportParserTest extends TestCase
                 new Field('iyr', '2017'),
                 new Field('cid', '147'),
                 new Field('hgt', '183cm'),
-            )
+            ),
         ];
 
         yield [
-            "hcl:#ae17e1 iyr:2013
+            'hcl:#ae17e1 iyr:2013
 eyr:2024
 ecl:brn pid:760753108 byr:1931
-hgt:179cm",
+hgt:179cm',
             new Passport(
                 new Field('hcl', '#ae17e1'),
                 new Field('iyr', '2013'),
@@ -49,7 +51,7 @@ hgt:179cm",
                 new Field('pid', '760753108'),
                 new Field('byr', '1931'),
                 new Field('hgt', '179cm'),
-            )
+            ),
         ];
     }
 }

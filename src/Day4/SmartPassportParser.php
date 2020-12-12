@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day4;
 
 class SmartPassportParser extends PassportParser
@@ -21,7 +23,7 @@ class SmartPassportParser extends PassportParser
 
         return new Passport(
             ...array_map(
-                fn($chunk): Field => $this->fieldFactory->create(...explode(':', $chunk)),
+                fn ($chunk): Field => $this->fieldFactory->create(...explode(':', $chunk)),
                 $chunks
             )
         );

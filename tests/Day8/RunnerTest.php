@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day8;
 
 use AdventOfCode\Day8\Runner;
@@ -30,7 +32,7 @@ DATA;
 
     public function testPart1(): void
     {
-        $input = trim(file_get_contents(__DIR__.'/input.txt'));
+        $input = trim(file_get_contents(__DIR__ . '/input.txt'));
 
         $runner = Runner::createFromString($input);
 
@@ -60,7 +62,7 @@ DATA;
 
     public function testPart2(): void
     {
-        $input = trim(file_get_contents(__DIR__.'/input.txt'));
+        $input = trim(file_get_contents(__DIR__ . '/input.txt'));
 
         $runner = Runner::createFromString($input);
 

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day4;
 
 use AdventOfCode\Day4\FieldFactory;
@@ -13,7 +15,7 @@ class SolutionTest extends TestCase
 {
     public function testSample(): void
     {
-        $input = file_get_contents(__DIR__.'/sample.txt');
+        $input = file_get_contents(__DIR__ . '/sample.txt');
 
         $passports = (new PassportCollectionParser(new PassportParser()))->parse($input);
 
@@ -24,7 +26,7 @@ class SolutionTest extends TestCase
 
     public function testPart1(): void
     {
-        $input = file_get_contents(__DIR__.'/input.txt');
+        $input = file_get_contents(__DIR__ . '/input.txt');
 
         $passports = (new PassportCollectionParser(new PassportParser()))->parse($input);
 
@@ -35,7 +37,7 @@ class SolutionTest extends TestCase
 
     public function testSample2Valid(): void
     {
-        $input = file_get_contents(__DIR__.'/sample2-valid.txt');
+        $input = file_get_contents(__DIR__ . '/sample2-valid.txt');
 
         $passports = (new PassportCollectionParser(new SmartPassportParser(new FieldFactory())))->parse($input);
 
@@ -46,7 +48,7 @@ class SolutionTest extends TestCase
 
     public function testSample2Invalid(): void
     {
-        $input = file_get_contents(__DIR__.'/sample2-invalid.txt');
+        $input = file_get_contents(__DIR__ . '/sample2-invalid.txt');
 
         $passports = (new PassportCollectionParser(new SmartPassportParser(new FieldFactory())))->parse($input);
 
@@ -57,7 +59,7 @@ class SolutionTest extends TestCase
 
     public function testPart2(): void
     {
-        $input = file_get_contents(__DIR__.'/input.txt');
+        $input = file_get_contents(__DIR__ . '/input.txt');
 
         $passports = (new PassportCollectionParser(new SmartPassportParser(new FieldFactory())))->parse($input);
 

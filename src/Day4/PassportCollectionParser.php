@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day4;
 
 class PassportCollectionParser
@@ -18,6 +20,6 @@ class PassportCollectionParser
     {
         $passports = explode("\n\n", $data);
 
-        return array_map(fn($passport): Passport => $this->passportParser->parse($passport), $passports);
+        return array_map(fn ($passport): Passport => $this->passportParser->parse($passport), $passports);
     }
 }

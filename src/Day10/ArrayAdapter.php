@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day10;
 
 class ArrayAdapter
@@ -22,12 +24,12 @@ class ArrayAdapter
         $differences = [1 => 1, 3 => 1, 2 => 1];
 
         foreach ($this->adapters as $value) {
-            if (in_array($value + 1, $this->adapters, true)) {
-                $differences[1]++;
-            } elseif (in_array($value + 2, $this->adapters, true)) {
-                $differences[2]++;
-            } elseif (in_array($value + 3, $this->adapters, true)) {
-                $differences[3]++;
+            if (\in_array($value + 1, $this->adapters, true)) {
+                ++$differences[1];
+            } elseif (\in_array($value + 2, $this->adapters, true)) {
+                ++$differences[2];
+            } elseif (\in_array($value + 3, $this->adapters, true)) {
+                ++$differences[3];
             }
         }
 
@@ -54,15 +56,15 @@ class ArrayAdapter
 
     public function countPath(array $list, int $node): int
     {
-        if (array_key_exists($node, $this->cache)) {
+        if (\array_key_exists($node, $this->cache)) {
             return $this->cache[$node];
         }
 
-        if (!array_key_exists($node, $list)) {
+        if (!\array_key_exists($node, $list)) {
             return 1;
         }
 
-        $this->cache[$node] = (int) array_sum(array_map(fn(int $child): int => $this->countPath($list, $child), $list[$node]));
+        $this->cache[$node] = (int) array_sum(array_map(fn (int $child): int => $this->countPath($list, $child), $list[$node]));
 
         return $this->cache[$node];
     }

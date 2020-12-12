@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day6;
 
 class InputParser
@@ -13,7 +15,7 @@ class InputParser
 
         return new GroupCollection(
             ...array_map(
-                fn(string $group) => new Group(...explode("\n", $group)),
+                fn (string $group) => new Group(...explode("\n", $group)),
                 $groups
             )
         );

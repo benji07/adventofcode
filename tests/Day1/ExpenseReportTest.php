@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day1;
 
 use AdventOfCode\Day1\ExpenseReport;
@@ -21,10 +23,10 @@ class ExpenseReportTest extends TestCase
     {
         yield 'sample 1' => [
             [1721, 979, 366, 299, 675, 1456],
-            514_579
+            514_579,
         ];
 
-        $data = explode("\n", file_get_contents(__DIR__.'/input1.csv'));
+        $data = explode("\n", file_get_contents(__DIR__ . '/input1.csv'));
         $data = array_map('intval', $data);
 
         yield 'part 1' => [$data, 980_499];
@@ -44,10 +46,10 @@ class ExpenseReportTest extends TestCase
     {
         yield 'sample 2' => [
             [1721, 979, 366, 299, 675, 1456],
-            241_861_950
+            241_861_950,
         ];
 
-        $data = explode("\n", trim(file_get_contents(__DIR__.'/input1.csv')));
+        $data = explode("\n", trim(file_get_contents(__DIR__ . '/input1.csv')));
         $data = array_map('intval', $data);
 
         yield 'part 2' => [$data, 200_637_446];

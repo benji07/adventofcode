@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day5;
 
 use AdventOfCode\Day5\BoardingPass;
@@ -30,9 +32,9 @@ class BoardingPassTest extends TestCase
 
     public function testPart1(): void
     {
-        $data = explode("\n", trim(file_get_contents(__DIR__.'/input.txt')));
+        $data = explode("\n", trim(file_get_contents(__DIR__ . '/input.txt')));
 
-        $boardingPasses = array_map(fn(string $seat): BoardingPass => new BoardingPass($seat), $data);
+        $boardingPasses = array_map(fn (string $seat): BoardingPass => new BoardingPass($seat), $data);
 
         $maxSeatId = (new HighestSeatFinder())->find(...$boardingPasses);
 
@@ -41,9 +43,9 @@ class BoardingPassTest extends TestCase
 
     public function testPart2(): void
     {
-        $data = explode("\n", trim(file_get_contents(__DIR__.'/input.txt')));
+        $data = explode("\n", trim(file_get_contents(__DIR__ . '/input.txt')));
 
-        $boardingPasses = array_map(fn(string $seat): BoardingPass => new BoardingPass($seat), $data);
+        $boardingPasses = array_map(fn (string $seat): BoardingPass => new BoardingPass($seat), $data);
 
         $maxSeatId = (new MissingSeatFinder())->find(...$boardingPasses);
 

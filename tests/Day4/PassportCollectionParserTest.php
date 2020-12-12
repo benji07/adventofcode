@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day4;
 
 use AdventOfCode\Day4\Field;
@@ -52,8 +54,8 @@ TEXT,
                     new Field('pid', '760753108'),
                     new Field('byr', '1931'),
                     new Field('hgt', '179cm'),
-                )
-            ]
+                ),
+            ],
         ];
     }
 }

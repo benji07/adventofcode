@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day11;
 
 class SeatingSystem
@@ -15,9 +17,9 @@ class SeatingSystem
 
     public function __construct(string $floorPlan)
     {
-        $this->floorPlan = array_map(fn(string $row): array => str_split($row), explode("\n", trim($floorPlan)));
-        $this->width = count(current($this->floorPlan));
-        $this->height = count($this->floorPlan);
+        $this->floorPlan = array_map(fn (string $row): array => str_split($row), explode("\n", trim($floorPlan)));
+        $this->width = \count(current($this->floorPlan));
+        $this->height = \count($this->floorPlan);
     }
 
     public function get(int $x, int $y): ?string
@@ -27,7 +29,7 @@ class SeatingSystem
 
     public function countOccupiedAdjacentCell(int $x, int $y, bool $breakOnFirst = true): int
     {
-        return count(array_filter([
+        return \count(array_filter([
             $this->findOccupiedSeat($x, $y, new Vector(-1, -1), $breakOnFirst),
             $this->findOccupiedSeat($x, $y, new Vector(0, -1), $breakOnFirst),
             $this->findOccupiedSeat($x, $y, new Vector(+1, -1), $breakOnFirst),
@@ -91,7 +93,7 @@ class SeatingSystem
 
     public function countOccupiedSeats(): int
     {
-        return (int) count_chars((string) $this, 1)[ord(self::OCCUPIED)] ?? 0;
+        return (int) count_chars((string) $this, 1)[\ord(self::OCCUPIED)] ?? 0;
     }
 
     public function __toString(): string

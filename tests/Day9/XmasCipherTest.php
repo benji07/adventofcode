@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day9;
 
 use AdventOfCode\Day9\XmasCipher;
@@ -7,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 class XmasCipherTest extends TestCase
 {
-
     /**
      * @dataProvider provideTestIsValid
      */
@@ -76,7 +77,6 @@ INPUT;
         $data = $this->cleanInput($input);
 
         self::assertEquals(127, $finder->getInvalid(5, $data));
-
     }
 
     public function testPart1(): void

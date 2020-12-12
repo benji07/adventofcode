@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day4;
 
 class PassportParser
@@ -14,7 +16,7 @@ class PassportParser
 
         return new Passport(
             ...array_map(
-                fn($chunk): Field => new Field(...explode(':', $chunk)),
+                fn ($chunk): Field => new Field(...explode(':', $chunk)),
                 $chunks
             )
         );

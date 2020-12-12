@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day4;
 
-use AdventOfCode\Day4\Field;
 use AdventOfCode\Day4\FieldFactory;
 use PHPUnit\Framework\TestCase;
 

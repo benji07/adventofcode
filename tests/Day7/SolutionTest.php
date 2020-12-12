@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day7;
 
 use AdventOfCode\Day7\Parser;
@@ -28,7 +30,7 @@ DATA;
 
     public function testPart1(): void
     {
-        $input = file_get_contents(__DIR__.'/input.txt');
+        $input = file_get_contents(__DIR__ . '/input.txt');
 
         $parser = new Parser($input);
 
@@ -72,7 +74,7 @@ DATA;
 
     public function testPart2(): void
     {
-        $input = file_get_contents(__DIR__.'/input.txt');
+        $input = file_get_contents(__DIR__ . '/input.txt');
 
         $parser = new Parser($input);
 

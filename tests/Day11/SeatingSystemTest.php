@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day11;
 
 use AdventOfCode\Day11\SeatingSystem;
@@ -41,8 +43,7 @@ INPUT;
 #.######.#
 #.#####.##
 OUTPUT
-            )
-            ,
+            ),
             (string) $seatingSystem
         );
 
@@ -62,8 +63,7 @@ L.#.#..#..
 #.LL###L.L
 #.#L###.##
 OUTPUT
-            )
-            ,
+            ),
             (string) $seatingSystem
         );
 
@@ -82,8 +82,7 @@ L.L.L..#..
 #.LLLLLL.L
 #.#L#L#.##
 OUTPUT
-            )
-            ,
+            ),
             (string) $seatingSystem
         );
 
@@ -102,8 +101,7 @@ L.#.L..#..
 #.LLLLLL.L
 #.#L#L#.##
 OUTPUT
-            )
-            ,
+            ),
             (string) $seatingSystem
         );
         $changed = $seatingSystem->fill();

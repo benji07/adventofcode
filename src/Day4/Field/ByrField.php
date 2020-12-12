@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day4\Field;
 
 use AdventOfCode\Day4\Field;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day2;
 
 use AdventOfCode\Day2\RuleFactoryInterface;
@@ -13,7 +15,7 @@ class ValidPasswordCounterTest extends TestCase
     /**
      * @dataProvider provideTestCount
      */
-    public function testCount(array $input, RuleFactoryInterface $ruleFactory, int $expectedCount) : void
+    public function testCount(array $input, RuleFactoryInterface $ruleFactory, int $expectedCount): void
     {
         $counter = new ValidPasswordCounter($ruleFactory);
 
@@ -32,7 +34,7 @@ class ValidPasswordCounterTest extends TestCase
             2,
         ];
 
-        $data = explode("\n", trim(file_get_contents(__DIR__.'/input.txt')));
+        $data = explode("\n", trim(file_get_contents(__DIR__ . '/input.txt')));
 
         yield [$data, new RuleV1Factory(), 524];
 
