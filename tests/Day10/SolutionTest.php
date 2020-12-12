@@ -134,6 +134,6 @@ INPUT;
     {
         $input = file_get_contents(__DIR__.'/input.txt');
 
-        self::assertEquals(2210, (new ArrayAdapter($input))->countArrangements());
+        self::assertEquals(7_086_739_046_912, (new ArrayAdapter($input))->countArrangements());
     }
 }

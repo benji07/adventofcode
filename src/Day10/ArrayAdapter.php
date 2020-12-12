@@ -7,6 +7,8 @@ class ArrayAdapter
     /** @var int[] */
     private array $adapters;
 
+    private array $cache = [];
+
     public function __construct(string $input)
     {
         $input = array_map('intval', explode("\n", trim($input)));
@@ -52,18 +54,16 @@ class ArrayAdapter
 
     public function countPath(array $list, int $node): int
     {
-        static $cache = [];
-
-        if (array_key_exists($node, $cache)) {
-            return $cache[$node];
+        if (array_key_exists($node, $this->cache)) {
+            return $this->cache[$node];
         }
 
         if (!array_key_exists($node, $list)) {
             return 1;
         }
 
-        $cache[$node] = (int) array_sum(array_map(fn(int $child): int => $this->countPath($list, $child), $list[$node]));
+        $this->cache[$node] = (int) array_sum(array_map(fn(int $child): int => $this->countPath($list, $child), $list[$node]));
 
-        return $cache[$node];
+        return $this->cache[$node];
     }
 }
