@@ -23,16 +23,18 @@ class MemoryGame
             $this->turns[$value] = [$turn];
         }
 
+        if (\array_key_exists($stopAt - 1, $this->input)) {
+            return $this->input[$stopAt - 1];
+        }
+
         $turn = \count($this->input);
-
-        for ($current = $turn; $current <= $stopAt; ++$current) {
-            $previous = end($this->input);
-
-            if (!\in_array($previous, \array_slice($this->input, 0, -1), true)) {
+        $lastValue = (int) end($this->input);
+        for ($current = $turn; $current < $stopAt; ++$current) {
+            if (\count($this->turns[$lastValue]) === 1) {
                 // If that was the first time the number has been spoken, the current player says 0.
                 $value = 0;
             } else {
-                $value = $this->turns[$previous][0] - $this->turns[$previous][1];
+                $value = $this->turns[$lastValue][0] - $this->turns[$lastValue][1];
             }
 
             if (!\array_key_exists($value, $this->turns)) {
@@ -41,9 +43,9 @@ class MemoryGame
 
             array_unshift($this->turns[$value], $current);
             $this->turns[$value] = \array_slice($this->turns[$value], 0, 2);
-            $this->input[] = $value;
+            $lastValue = $value;
         }
 
-        return $this->input[$stopAt - 1];
+        return $lastValue;
     }
 }
