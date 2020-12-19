@@ -13,5 +13,8 @@
         "phpunit/phpunit": "^9.4",
         "phpstan/phpstan-strict-rules": "^0.12.5",
         "friendsofphp/php-cs-fixer": "^2.17"
+    },
+    "require": {
+        "doctrine/lexer": "^1.2"
     }
 }
