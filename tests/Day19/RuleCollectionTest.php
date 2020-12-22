@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Tests\Day19;
 
 use AdventOfCode\Day19\RuleCollection;
@@ -49,7 +51,7 @@ class RuleCollectionTest extends TestCase
 
     public function testSample(): void
     {
-        [$rules, $tests] = explode("\n\n", file_get_contents(__DIR__.'/sample.txt'));
+        [$rules, $tests] = explode("\n\n", file_get_contents(__DIR__ . '/sample.txt'));
         $rules = new RuleCollection(explode("\n", trim($rules)));
 
         self::assertEquals(2, $rules->countMatches(explode("\n", trim($tests))));
@@ -57,7 +59,7 @@ class RuleCollectionTest extends TestCase
 
     public function testPart1(): void
     {
-        [$rules, $tests] = explode("\n\n", file_get_contents(__DIR__.'/input.txt'));
+        [$rules, $tests] = explode("\n\n", file_get_contents(__DIR__ . '/input.txt'));
         $rules = new RuleCollection(explode("\n", trim($rules)));
 
         self::assertEquals(165, $rules->countMatches(explode("\n", trim($tests))));
@@ -65,7 +67,7 @@ class RuleCollectionTest extends TestCase
 
     public function testSample2(): void
     {
-        [$rules, $tests] = explode("\n\n", file_get_contents(__DIR__.'/sample2.txt'));
+        [$rules, $tests] = explode("\n\n", file_get_contents(__DIR__ . '/sample2.txt'));
         $tests = explode("\n", trim($tests));
 
         $rules = new RuleCollection(explode("\n", trim($rules)));
@@ -80,9 +82,9 @@ class RuleCollectionTest extends TestCase
 
     public function testPart2(): void
     {
-        [$rules, $tests] = explode("\n\n", file_get_contents(__DIR__.'/input.txt'));
+        [$rules, $tests] = explode("\n\n", file_get_contents(__DIR__ . '/input.txt'));
         $rules = new RuleCollection(explode("\n", trim($rules)));
-ini_set('pcre.jit', 0);
+        ini_set('pcre.jit', 0);
         $rules->set(8, '42 | 42 8');
         $rules->set(11, '42 31 | 42 11 31');
 

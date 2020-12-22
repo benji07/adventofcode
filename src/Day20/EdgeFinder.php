@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day20;
 
 class EdgeFinder
@@ -11,21 +13,21 @@ class EdgeFinder
             $matches[$tile->id] = $this->findMatches($tile, array_filter($tiles, fn (Tile $t) => $t->id !== $tile->id));
         }
 
-        return array_keys(array_filter($matches, fn ($tiles) => count($tiles) == 2));
+        return array_filter($matches, fn ($tiles) => \count($tiles) == 2);
     }
 
     /**
      * @param Tile[] $tiles
      *
-     * @return Tile[]
+     * @return TileMatch[]
      */
-    protected function findMatches(Tile $tile, array $tiles): array
+    public function findMatches(Tile $tile, array $tiles): array
     {
         $result = [];
         foreach ($tiles as $search) {
-            foreach ($tile->getEdges(true) as $edge) {
-                if (in_array($edge, $search->getEdges(), true)) {
-                    $result[] = $search;
+            foreach ($tile->getEdges(true) as $sourceEdge => $edge) {
+                if ($destinationEdge = array_search($edge, $search->getEdges(), true)) {
+                    $result[] = new TileMatch($tile, $search, $sourceEdge, $destinationEdge);
                 }
             }
         }

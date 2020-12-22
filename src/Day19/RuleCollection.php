@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day19;
 
 class RuleCollection
@@ -23,12 +25,12 @@ class RuleCollection
 
     public function countMatches(array $tests): int
     {
-        return count(array_filter($tests, fn (string $test): bool => $this->validate($test)));
+        return \count(array_filter($tests, fn (string $test): bool => $this->validate($test)));
     }
 
     public function getRegex(): string
     {
-        return '/^'.$this->rules[0]->asString(15).'$/';
+        return '/^' . $this->rules[0]->asString(15) . '$/';
     }
 
     public function set(int $index, string $constraints): void
@@ -41,7 +43,7 @@ class RuleCollection
 
         if (str_contains($constraints, '|')) {
             $this->rules[$index] = new OrRule(array_map(
-                fn(string $constraint) => new AndRule($this, array_map('intval', explode(' ', $constraint))),
+                fn (string $constraint) => new AndRule($this, array_map('intval', explode(' ', $constraint))),
                 explode(' | ', $constraints)
             ));
 

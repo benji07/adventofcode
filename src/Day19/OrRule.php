@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day19;
 
 class OrRule implements Rule
 {
     public function __construct(
-        /** @var Rule[] */
+        /* @var Rule[] */
         private array $rulesToMatches
     ) {
     }
@@ -28,7 +30,7 @@ class OrRule implements Rule
     {
         return '(' . implode(
                 '|',
-                array_map(fn(Rule $rule): string => $rule->asString($deep - 1), $this->rulesToMatches)
+                array_map(fn (Rule $rule): string => $rule->asString($deep - 1), $this->rulesToMatches)
             ) . ')';
     }
 }

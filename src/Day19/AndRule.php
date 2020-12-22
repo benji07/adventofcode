@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AdventOfCode\Day19;
 
 class AndRule implements Rule
 {
     public function __construct(
         private RuleCollection $ruleCollection,
-        /** @var int[] */
+        /* @var int[] */
         private array $rulesToMatches
     ) {
     }
@@ -18,6 +20,7 @@ class AndRule implements Rule
             $index = $index + $i;
             if (!$this->ruleCollection->rules[$rule]->isValid($string, $index)) {
                 $index = $firstIndex;
+
                 return false;
             }
         }
