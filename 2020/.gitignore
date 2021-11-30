@@ -1,6 +1,5 @@
+/vendor/
 .phpunit.result.cache
 composer.lock
 .phpstan.neon.swp
-vendor
-.phpunit.result.cache
 .php_cs.cache
