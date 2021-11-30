@@ -1,0 +1,20 @@
+{
+    "name": "benji07/adventofcode2020",
+    "description": "Advent of code 2020",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "AdventOfCode\\": "src/",
+            "AdventOfCode\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^0.12.58",
+        "phpunit/phpunit": "^9.4",
+        "phpstan/phpstan-strict-rules": "^0.12.5",
+        "friendsofphp/php-cs-fixer": "^2.17"
+    },
+    "require": {
+        "doctrine/lexer": "^1.2"
+    }
+}
