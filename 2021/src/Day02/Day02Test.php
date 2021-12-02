@@ -9,6 +9,8 @@ use PHPUnit\Framework\TestCase;
 class Day02Test extends TestCase
 {
     /**
+     * @param string[] $input
+     *
      * @dataProvider provideTestPart1
      */
     public function testPart1(array $input, int $expectedResult): void
@@ -16,18 +18,22 @@ class Day02Test extends TestCase
         [$position, $depth] = [0, 0];
 
         foreach ($input as $instruction) {
-            [$direction, $value] = sscanf($instruction, '%s %d');
+            sscanf($instruction, '%s %d', $direction, $value);
 
-            [$position, $depth] = match($direction) {
+            [$position, $depth] = match ($direction) {
                 'forward' => [$position + $value, $depth],
                 'down' => [$position, $depth + $value],
                 'up' => [$position, $depth - $value],
+                default => throw new \RuntimeException(),
             };
         }
 
         self::assertEquals($expectedResult, $position * $depth);
     }
 
+    /**
+     * @return iterable<array{string[], int}>
+     */
     public function provideTestPart1(): iterable
     {
         yield [$this->getSampleInput(), 150];
@@ -35,6 +41,8 @@ class Day02Test extends TestCase
     }
 
     /**
+     * @param string[] $input
+     *
      * @dataProvider provideTestPart2
      */
     public function testPart2(array $input, int $expectedResult): void
@@ -42,24 +50,31 @@ class Day02Test extends TestCase
         [$position, $depth, $aim] = [0, 0, 0];
 
         foreach ($input as $instruction) {
-            [$direction, $value] = sscanf($instruction, '%s %d');
+            sscanf($instruction, '%s %d', $direction, $value);
 
-            [$position, $depth, $aim] = match($direction) {
-                'forward' => [$position + $value, $depth + $aim * $value , $aim],
+            [$position, $depth, $aim] = match ($direction) {
+                'forward' => [$position + $value, $depth + $aim * $value, $aim],
                 'down' => [$position, $depth, $aim + $value],
                 'up' => [$position, $depth, $aim - $value],
+                default => throw new \RuntimeException(),
             };
         }
 
         self::assertEquals($expectedResult, $position * $depth);
     }
 
+    /**
+     * @return iterable<array{string[], int}>
+     */
     public function provideTestPart2(): iterable
     {
         yield [$this->getSampleInput(), 900];
         yield [$this->getInput(), 1_942_068_080];
     }
 
+    /**
+     * @return string[]
+     */
     private function getSampleInput(): array
     {
         return [
@@ -72,8 +87,15 @@ class Day02Test extends TestCase
         ];
     }
 
+    /**
+     * @return string[]
+     */
     protected function getInput(): array
     {
-        return array_map('trim', file(__DIR__.'/input.txt'));
+        $file = file(__DIR__ . '/input.txt');
+
+        \assert(\is_array($file));
+
+        return array_map('trim', $file);
     }
 }
