@@ -1,4 +1,7 @@
-.PHONY: lint lint.php-cs-fixer lint.phpstan
+.PHONY: test lint lint.php-cs-fixer lint.phpstan
+
+test:
+	vendor/bin/phpunit
 
 lint: lint.php-cs-fixer lint.phpstan
 
