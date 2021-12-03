@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AOC2021\Day01;
+namespace AOC2021\Day02;
 
 use PHPUnit\Framework\TestCase;
 
