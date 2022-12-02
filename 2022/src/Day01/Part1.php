@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AOC2022\Day01;
 
 class Part1

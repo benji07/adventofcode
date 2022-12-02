@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AOC2022\Day01;
 
 class Part2
@@ -16,6 +18,6 @@ class Part2
         rsort($elves);
         $top3 = \array_slice($elves, 0, 3);
 
-        return array_sum($top3);
+        return (int) array_sum($top3);
     }
 }
